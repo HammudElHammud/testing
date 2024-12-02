@@ -6,7 +6,7 @@ on:
 jobs:
     jobs1:
          name: on ubuntu
-         run-on: ubuntu-latest
+         runs-on: ubuntu-latest
          steps:
             - name: test run ubuntu
               uses: actions/checkout@v2
@@ -15,7 +15,7 @@ jobs:
 
     jobs2:
          name: on windows
-         run-on: windows-latest
+         runs-on: windows-latest
          steps:
              - name: test on windows
                uses: actions/checkout@v2
