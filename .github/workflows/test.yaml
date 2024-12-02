@@ -1,24 +1,29 @@
-name: testing git action
+name: testing dependecy
 
 on:
-  push
+ push
 
-jobs:
-    jobs1:
-         name: on ubuntu
-         runs-on: ubuntu-latest
-         steps:
-            - name: test run ubuntu
-              uses: actions/checkout@v2
-            - name: stes 2  
-              run: env | sort
-
-    jobs2:
-         name: on windows
+jobs: 
+    ubuntu:
+      runs-on: ubuntu-latest
+      steps:
+         - name: run on ubuntu
+           run: date
+    windows:
          runs-on: windows-latest
          steps:
-             - name: test on windows
-               uses: actions/checkout@v2
-             - name: step 2 windows
-               run:  "Get-ChildItem Env: | Sort-Object Name" 
+             - name: run on windows
+               run: date
+              
+    mac:
+       runs-on: macos-latest
+       steps: 
+          - name: run on maco
+            run: date 
+    depend:
+        needs: [ubuntu, mac]
+        runs-on: macos-latest
+        steps: 
+           - name: make depends
+             run: date
 
