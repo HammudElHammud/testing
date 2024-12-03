@@ -3,27 +3,20 @@ name: testing dependecy
 on:
  push
 
+env:
+  ARTICAL_NAME: MYFILE
+  
+
 jobs: 
     ubuntu:
       runs-on: ubuntu-latest
       steps:
-         - name: run on ubuntu
-           run: date
-    windows:
-         runs-on: windows-latest
-         steps:
-             - name: run on windows
-               run: date
-              
-    mac:
-       runs-on: macos-latest
-       steps: 
-          - name: run on maco
-            run: date 
-    depend:
-        needs: [ubuntu, mac]
-        runs-on: macos-latest
-        steps: 
-           - name: make depends
-             run: date
+         - name: checkout the code
+           uses: actions/checkout@v2
+         - name: upload file
+           uses: actions/upload-artifact@v2
+           with:
+              name: ${{ env.ARTICAL_NAME}}
+              path: .
+
 
